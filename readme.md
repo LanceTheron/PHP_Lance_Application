@@ -1,45 +1,65 @@
-# Task Manager Application
+PHPImagelance Application
+Overview
+This is a lightweight web application built using pure PHP, HTML, CSS, JavaScript, and Bootstrap. It runs on a Docker container with the php:7.4-apache image. This guide will walk you through how to run the application with minimal setup using Docker.
 
-## Overview
+Prerequisites
+Docker installed and running
+Command line access (Terminal or Command Prompt)
+Running the Application
+Pull the Docker Image (Optional):
+If the image is hosted on Docker Hub, you can pull it using:
 
-This is a PHP-based task manager application that allows users to manage tasks and users with CRUD functionality.
+docker pull <your-dockerhub-username>/phpimagelance
 
-## Getting Started
+Run the Docker Container:
+Use the following command to run the container on port 2000:
 
-### Prerequisites
+docker run -d -p 2000:80 --name phpimagelance-container phpimagelance
 
-- Docker
-- Docker Compose
+Explanation:
 
-### Running the Application
+-d runs the container in detached mode.
+-p 2000:80 maps the container’s port 80 to your computer's port 2000.
+--name phpimagelance-container gives the container a meaningful name.
+Verify the Container is Running:
+Check if the container is running by using:
 
-1. Clone the repository:
+docker ps
 
-    ```bash
-    git clone https://github.com/yourusername/task_manager.git
-    cd task_manager/docker
-    ```
+Access the Application:
+Open a browser and go to:
 
-2. Build and run the application:
+http://localhost:2000
 
-    ```bash
-    docker-compose up --build
-    ```
+Managing the Container
+Stop the container: docker stop phpimagelance-container
+Restart the container: docker start phpimagelance-container
+Remove the container: docker rm phpimagelance-container
+Technologies Used
+PHP (7.4-apache):
+The backend logic is built in PHP. Apache serves as the web server to deliver the PHP content to the browser.
 
-3. Access the application at `http://localhost`.
+HTML and CSS:
+HTML provides the structure of the web pages, and CSS is used to style the pages for better presentation.
 
-### Database Setup
+Bootstrap:
+Bootstrap ensures that the application has a responsive design, meaning it will adapt to different devices and screen sizes.
 
-- The application uses MySQL as the database.
-- The database will be created automatically by Docker.
+JavaScript:
+JavaScript adds interactivity, such as form validation or dynamic content updates, for an enhanced user experience.
 
-### Features
+Why These Technologies Were Chosen
+Pure PHP keeps the application lightweight and easy to maintain without relying on frameworks.
+HTML, CSS, and JavaScript offer a simple and effective way to create an interactive user interface.
+Bootstrap ensures the design remains consistent across various devices.
+Docker packages the entire application and its dependencies to ensure it runs consistently across different environments.
+Troubleshooting
+Port 2000 Not Accessible:
+Ensure Docker is running and no other application is using port 2000. If needed, change the port by running:
+docker run -d -p 3000:80 --name phpimagelance-container phpimagelance
 
-- CRUD operations for Users and Tasks
-- Pagination and sorting
-- Filtering tasks by User
-- Marking tasks as complete
+Check Logs for Errors:
+Use the command: docker logs phpimagelance-container
 
-## Author
-
-Your Name
+Verify the Container Status:
+Ensure the container is running by using: docker ps
