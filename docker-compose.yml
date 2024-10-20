@@ -1,0 +1,20 @@
+version: "2"
+services:
+  webserver:
+    image: phpimagelance
+    ports:
+      - "2000:80"
+    volumes:
+      - ./app:/var/www/html
+    environment:
+      MYSQL_DB_CONNECTION: sql58.jnb2.host-h.net
+      MYSQL_DB_NAME: fi1g4_c2gww
+      MYSQL_USER: ef79e_iv2a7
+      MYSQL_PASSWORD: V53O1j771Sy860
+      SITE_URL: http://localhost
+    networks:
+      - test
+
+networks:
+  test:
+    external: true
